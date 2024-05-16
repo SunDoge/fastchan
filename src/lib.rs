@@ -1,14 +1,10 @@
-use pyo3::prelude::*;
+mod channel;
 
-/// Prints a message.
-#[pyfunction]
-fn hello() -> PyResult<String> {
-    Ok("Hello from fastchan!".into())
-}
+use pyo3::prelude::*;
 
 /// A Python module implemented in Rust.
 #[pymodule]
-fn _lowlevel(_py: Python, m: &PyModule) -> PyResult<()> {
-    m.add_function(wrap_pyfunction!(hello, m)?)?;
+fn _lowlevel(_py: Python, m: &Bound<'_, PyModule>) -> PyResult<()> {
+    m.add_function(wrap_pyfunction!(channel::bounded, m)?)?;
     Ok(())
 }

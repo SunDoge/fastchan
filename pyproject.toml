@@ -14,9 +14,14 @@ build-backend = "maturin"
 managed = true
 dev-dependencies = [
     "pip>=24.0",
+    "torch==2.3.0+cpu",
 ]
 
 [tool.maturin]
 python-source = "python"
 module-name = "fastchan._lowlevel"
 features = ["pyo3/extension-module"]
+
+[[tool.rye.sources]]
+name = "pytorch"
+url = "https://download.pytorch.org/whl/cpu"
