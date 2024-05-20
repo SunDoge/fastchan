@@ -10,5 +10,5 @@ crate-type = ["cdylib"]
 
 [dependencies]
 anyhow = "1.0.83"
-crossbeam-channel = "0.5.12"
+crossbeam-channel = "0.5.13"
 pyo3 = {version = "0.21", features = ["anyhow"]}
