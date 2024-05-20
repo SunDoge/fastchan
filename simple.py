@@ -9,3 +9,5 @@ del tx
 
 for x in rx:
     print(x)
+
+del rx
