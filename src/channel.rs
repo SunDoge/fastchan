@@ -21,24 +21,6 @@ impl Receiver {
         let x = py.allow_threads(|| self.0.recv())?;
         Ok(x)
     }
-
-    fn __iter__(slf: PyRef<'_, Self>) -> PyResult<Py<ReceiverIter>> {
-        let iter = ReceiverIter(slf.0.clone());
-        Py::new(slf.py(), iter)
-    }
-}
-
-#[pyclass]
-pub struct ReceiverIter(crossbeam_channel::Receiver<PyObject>);
-
-#[pymethods]
-impl ReceiverIter {
-    fn __iter__(slf: PyRef<'_, Self>) -> PyRef<'_, Self> {
-        slf
-    }
-    fn __next__(slf: PyRefMut<'_, Self>) -> Option<PyObject> {
-        slf.0.recv().ok()
-    }
 }
 
 #[pyfunction]

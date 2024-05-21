@@ -15,6 +15,7 @@ managed = true
 dev-dependencies = [
     "pip>=24.0",
     "torch==2.3.0+cpu",
+    "tqdm>=4.64.1",
 ]
 
 [tool.maturin]
